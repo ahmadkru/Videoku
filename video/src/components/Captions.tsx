@@ -1,7 +1,8 @@
 import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import { COLORS, fontFamily } from "../brand";
 
-// Satu "halaman" caption: 2–3 kata. Waktu dalam ms relatif ke awal scene.
+// Satu "halaman" caption: 2–3 kata. Waktu dalam ms relatif ke file footage asli,
+// jadi caption tetap sinkron walau klip dipotong (trimBefore).
 // Kata dalam `highlight` diwarnai kuning.
 export type CaptionPage = {
   text: string;
@@ -10,17 +11,21 @@ export type CaptionPage = {
   highlight?: string[];
 };
 
-export const Captions: React.FC<{ pages: CaptionPage[] }> = ({ pages }) => {
+export const Captions: React.FC<{ pages: CaptionPage[]; trimBefore?: number }> = ({
+  pages,
+  trimBefore = 0,
+}) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const ms = (frame / fps) * 1000;
+  const sourceFrame = frame + trimBefore;
+  const ms = (sourceFrame / fps) * 1000;
 
   const page = pages.find((p) => ms >= p.startMs && ms < p.endMs);
   if (!page) {
     return null;
   }
 
-  const pageFrame = frame - (page.startMs / 1000) * fps;
+  const pageFrame = sourceFrame - (page.startMs / 1000) * fps;
   const scale = interpolate(pageFrame, [0, 4], [0.9, 1], {
     extrapolateRight: "clamp",
   });
@@ -39,7 +44,9 @@ export const Captions: React.FC<{ pages: CaptionPage[] }> = ({ pages }) => {
         lineHeight: 1.1,
         textTransform: "uppercase",
         color: COLORS.white,
-        textShadow: "0 5px 0 rgba(0,0,0,0.65), 0 0 18px rgba(0,0,0,0.5)",
+        WebkitTextStroke: "12px black",
+        paintOrder: "stroke fill",
+        textShadow: "0 6px 0 rgba(0,0,0,0.7)",
         scale: String(scale),
       }}
     >

@@ -36,6 +36,8 @@ export const TitleOverlay: React.FC<{
         textAlign: "center",
         fontFamily,
         color: COLORS.white,
+        WebkitTextStroke: "10px black",
+        paintOrder: "stroke fill",
         textShadow: "0 4px 24px rgba(0,0,0,0.6)",
         opacity: enter * (1 - exit),
         translate: `0 ${(1 - enter) * 40}px`,

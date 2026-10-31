@@ -1,43 +1,69 @@
 import { linearTiming, TransitionSeries } from "@remotion/transitions";
-import { AbsoluteFill, Sequence, useVideoConfig } from "remotion";
-import { Captions } from "./components/Captions";
+import { AbsoluteFill, Sequence } from "remotion";
+import { Clip } from "./components/Clip";
 import { diagonalWipe } from "./components/DiagonalWipe";
 import { EndCard } from "./components/EndCard";
-import { Footage } from "./components/Footage";
 import { LogoBug } from "./components/LogoBug";
 import { QuestionCard } from "./components/QuestionCard";
 import { TitleOverlay } from "./components/TitleOverlay";
 import { FOOTAGE } from "./footage";
 
 // Durasi total: 945 frame scene − 3 × 15 frame transisi = 900 frame (30 dtk).
-// Caption ([]) diisi dari transkripsi suara peserta setelah footage tersedia;
-// trimBefore tiap scene disesuaikan ke momen terbaik di footage.
+// trimBefore = frame di footage asli (30fps). Waktu caption = ms di footage asli,
+// dari transkripsi Whisper lalu dirapikan.
 export const Testimoni: React.FC = () => {
-  const { fps } = useVideoConfig();
-
   return (
     <AbsoluteFill style={{ backgroundColor: "black" }}>
       <TransitionSeries name="Testimoni">
-        <TransitionSeries.Sequence name="Hook" durationInFrames={2 * fps}>
-          <Footage src={FOOTAGE.broll1} label="B-ROLL 1 · HOOK" muted pushTo={1.12} />
-          <TitleOverlay title="Apa kata peserta kami?" top={720} size={104} />
-          <LogoBug />
-        </TransitionSeries.Sequence>
-
-        <TransitionSeries.Sequence name="Perkenalan" durationInFrames={6 * fps}>
-          <Footage
+        <TransitionSeries.Sequence name="Pembuka" durationInFrames={187}>
+          <Clip
+            name="Alhamdulillah"
             src={FOOTAGE.main}
-            label="UTAMA · PERKENALAN"
-            trimBefore={0}
-            punchInAt={3 * fps}
+            from={0}
+            durationInFrames={33}
+            trimBefore={254}
+            zoom
+            captions={[{ text: "Alhamdulillah,", startMs: 8450, endMs: 9600, highlight: ["alhamdulillah"] }]}
           />
-          <TitleOverlay
-            title="Testimoni Peserta"
-            subtitle="ASDTUG Handling"
-            top={560}
-            outAt={Math.round(2.7 * fps)}
+          <Clip
+            name="Lancar"
+            src={FOOTAGE.main}
+            from={33}
+            durationInFrames={51}
+            trimBefore={303}
+            captions={[
+              { text: "pelaksanaannya", startMs: 10100, endMs: 10850 },
+              { text: "lancar", startMs: 10850, endMs: 11850, highlight: ["lancar"] },
+            ]}
           />
-          <Captions pages={[]} />
+          <Clip
+            name="Walaupun banyak"
+            src={FOOTAGE.main}
+            from={84}
+            durationInFrames={32}
+            trimBefore={354}
+            zoom
+            captions={[{ text: "walaupun banyak", startMs: 11750, endMs: 12900 }]}
+          />
+          <Clip
+            name="Belajar lagi"
+            src={FOOTAGE.main}
+            from={116}
+            durationInFrames={71}
+            trimBefore={462}
+            captions={[{ text: "belajar lagi.", startMs: 15350, endMs: 17800, highlight: ["belajar"] }]}
+          />
+          <Sequence name="Hook teks" durationInFrames={84}>
+            <TitleOverlay title="Apa kata peserta training kami?" top={300} size={88} />
+          </Sequence>
+          <Sequence name="Judul" from={84} durationInFrames={103}>
+            <TitleOverlay
+              title="Testimoni Peserta"
+              subtitle="Training Basic ASD Tug Handling"
+              top={300}
+              outAt={90}
+            />
+          </Sequence>
           <LogoBug />
         </TransitionSeries.Sequence>
 
@@ -46,21 +72,43 @@ export const Testimoni: React.FC = () => {
           timing={linearTiming({ durationInFrames: 15 })}
         />
 
-        <TransitionSeries.Sequence name="Pertanyaan 1" durationInFrames={2 * fps}>
-          <QuestionCard question="Apa yang paling berkesan selama pelatihan?" />
+        <TransitionSeries.Sequence name="Pertanyaan 1" durationInFrames={60}>
+          <QuestionCard question="Bagaimana pengalaman training-nya?" />
         </TransitionSeries.Sequence>
 
-        <TransitionSeries.Sequence name="Jawaban 1" durationInFrames={8 * fps}>
-          <Footage
+        <TransitionSeries.Sequence name="Jawaban 1" durationInFrames={247}>
+          <Clip
+            name="Selama saya pembelajaran"
             src={FOOTAGE.main}
-            label="UTAMA · JAWABAN 1"
-            trimBefore={6 * fps}
-            punchInAt={Math.round(2.3 * fps)}
+            from={0}
+            durationInFrames={68}
+            trimBefore={557}
+            captions={[
+              { text: "Selama saya", startMs: 18500, endMs: 19310 },
+              { text: "pembelajaran", startMs: 19310, endMs: 20850, highlight: ["pembelajaran"] },
+            ]}
           />
-          <Sequence name="Cutaway B-roll 2" from={5 * fps} durationInFrames={Math.round(1.5 * fps)}>
-            <Footage src={FOOTAGE.broll2} label="B-ROLL 2" muted pushTo={1.1} />
-          </Sequence>
-          <Captions pages={[]} />
+          <Clip
+            name="Teori online 3 bulan"
+            src={FOOTAGE.main}
+            from={68}
+            durationInFrames={119}
+            trimBefore={645}
+            zoom
+            captions={[
+              { text: "dari awal", startMs: 21450, endMs: 23090 },
+              { text: "teori online", startMs: 23090, endMs: 24030, highlight: ["teori", "online"] },
+              { text: "selama 3 bulan", startMs: 24030, endMs: 25500, highlight: ["3", "bulan"] },
+            ]}
+          />
+          <Clip
+            name="Saya berlayar"
+            src={FOOTAGE.main}
+            from={187}
+            durationInFrames={60}
+            trimBefore={810}
+            captions={[{ text: "saya berlayar.", startMs: 26950, endMs: 29050, highlight: ["berlayar"] }]}
+          />
           <LogoBug />
         </TransitionSeries.Sequence>
 
@@ -69,25 +117,57 @@ export const Testimoni: React.FC = () => {
           timing={linearTiming({ durationInFrames: 15 })}
         />
 
-        <TransitionSeries.Sequence name="Pertanyaan 2" durationInFrames={2 * fps}>
-          <QuestionCard question="Kenapa kamu merekomendasikan ASDTUG Handling?" />
+        <TransitionSeries.Sequence name="Pertanyaan 2" durationInFrames={60}>
+          <QuestionCard question="Apa pesan untuk Capt. Alif?" />
         </TransitionSeries.Sequence>
 
-        <TransitionSeries.Sequence name="Jawaban 2" durationInFrames={8 * fps}>
-          <Footage
+        <TransitionSeries.Sequence name="Jawaban 2" durationInFrames={296}>
+          <Clip
+            name="Dan"
             src={FOOTAGE.main}
-            label="UTAMA · JAWABAN 2"
-            trimBefore={14 * fps}
-            punchInAt={Math.round(1.5 * fps)}
-            pushTo={1.1}
+            from={0}
+            durationInFrames={24}
+            trimBefore={1223}
+            zoom
+            captions={[{ text: "Dan", startMs: 40750, endMs: 41600 }]}
           />
-          <Sequence name="Cutaway B-roll 3" from={3 * fps} durationInFrames={Math.round(1.5 * fps)}>
-            <Footage src={FOOTAGE.broll3} label="B-ROLL 3" muted pushTo={1.1} />
-          </Sequence>
-          <Sequence name="Cutaway B-roll 4" from={6 * fps} durationInFrames={fps}>
-            <Footage src={FOOTAGE.broll4} label="B-ROLL 4" muted pushTo={1.1} />
-          </Sequence>
-          <Captions pages={[]} />
+          <Clip
+            name="Terima kasih Capt. Alif"
+            src={FOOTAGE.main}
+            from={24}
+            durationInFrames={81}
+            trimBefore={1266}
+            captions={[
+              { text: "Capt. Alif,", startMs: 42150, endMs: 42890, highlight: ["alif"] },
+              { text: "terima kasih", startMs: 42890, endMs: 43750 },
+              { text: "banyak bantuannya", startMs: 43750, endMs: 44950, highlight: ["banyak"] },
+            ]}
+          />
+          <Clip
+            name="Sampai hari ini"
+            src={FOOTAGE.main}
+            from={105}
+            durationInFrames={117}
+            trimBefore={1376}
+            zoom
+            captions={[
+              { text: "selama pelajaran", startMs: 45800, endMs: 46870 },
+              { text: "dari awal teori", startMs: 46870, endMs: 48070, highlight: ["teori"] },
+              { text: "sampai hari ini.", startMs: 48070, endMs: 49800, highlight: ["hari", "ini"] },
+            ]}
+          />
+          <Clip
+            name="Penutup salam"
+            src={FOOTAGE.main}
+            from={222}
+            durationInFrames={74}
+            trimBefore={1842}
+            captions={[
+              { text: "Terima kasih.", startMs: 61350, endMs: 62500, highlight: ["terima", "kasih"] },
+              { text: "Assalamualaikum", startMs: 62500, endMs: 63090 },
+              { text: "warahmatullahi wabarakatuh.", startMs: 63090, endMs: 63900 },
+            ]}
+          />
           <LogoBug />
         </TransitionSeries.Sequence>
 
@@ -96,8 +176,8 @@ export const Testimoni: React.FC = () => {
           timing={linearTiming({ durationInFrames: 15 })}
         />
 
-        <TransitionSeries.Sequence name="Penutup" durationInFrames={Math.round(3.5 * fps)}>
-          <EndCard cta="Ikuti untuk info pelatihan berikutnya" handle="@asdtughandling" />
+        <TransitionSeries.Sequence name="Penutup" durationInFrames={95}>
+          <EndCard cta="Ikuti untuk info training berikutnya" handle="@asdtug.handling" />
         </TransitionSeries.Sequence>
       </TransitionSeries>
     </AbsoluteFill>
