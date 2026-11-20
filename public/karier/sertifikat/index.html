@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; form-action 'none'; base-uri 'none'">
+<title>Pengingat Sertifikat</title>
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/common.js"></script>
+<script defer src="sertifikat.js"></script>
+</head>
+<body>
+<a class="skip" href="#isi">Lewati ke isi</a>
+<header class="topbar"><div class="wrap">
+  <a class="brand" href="/">CAKRA <span>Kediri Raya</span></a>
+  <nav aria-label="Menu utama"><ul class="topnav">
+    <li><a href="/">Beranda</a></li>
+    <li><a href="/karier/">CV</a></li>
+    <li><a href="/karier/sertifikat/" aria-current="page">Sertifikat</a></li>
+    <li><a href="/karier/persiapan/">Persiapan</a></li>
+    <li><a href="/karier/darat/">Karier darat</a></li>
+  </ul></nav>
+</div></header>
+
+<div class="mast"><div class="wrap">
+  <p class="eyebrow">Karier CAKRA</p>
+  <h1>Pengingat sertifikat</h1>
+  <p>Catat tanggal berlaku sertifikat dan dokumenmu. Lihat mana yang perlu diperpanjang sebelum kontrak berikutnya, lalu pasang pengingat di kalender.</p>
+</div></div>
+
+<main id="isi" class="wrap">
+<noscript><p class="note">Aktifkan JavaScript untuk memakai pengingat.</p></noscript>
+<div class="layout side">
+  <section class="panel" aria-labelledby="daftar-title">
+    <h2 id="daftar-title">Daftar sertifikat</h2>
+    <p id="summary" class="note" aria-live="polite"></p>
+    <ul class="list" id="certList"></ul>
+    <div class="actions no-print">
+      <button type="button" id="ics" disabled>Unduh pengingat kalender (.ics)</button>
+      <button type="button" class="secondary" id="printList" disabled>Cetak daftar</button>
+    </div>
+    <p class="muted small no-print">Berkas .ics bisa dibuka di Google Calendar, kalender iPhone, atau Outlook. Isinya satu acara di tanggal habis berlaku dan satu acara "mulai urus perpanjangan" sesuai jarak peringatan.</p>
+  </section>
+
+  <div class="grid no-print">
+    <section class="panel" aria-labelledby="tambah-title">
+      <h2 id="tambah-title">Tambah sertifikat</h2>
+      <p class="note warn small">Tulis nama sertifikat saja. Jangan masukkan nomor sertifikat, nomor paspor, atau nomor buku pelaut.</p>
+      <form id="addForm" class="fields" autocomplete="off" novalidate>
+        <label for="nama">Nama sertifikat/dokumen <span class="muted">(wajib)</span>
+          <input id="nama" list="namaUmum" maxlength="120" required placeholder="Ketik atau pilih dari daftar">
+        </label>
+        <datalist id="namaUmum">
+          <option value="BST (Basic Safety Training)"></option>
+          <option value="SAT (Security Awareness Training)"></option>
+          <option value="SDSD (Seafarers with Designated Security Duties)"></option>
+          <option value="AFF (Advanced Fire Fighting)"></option>
+          <option value="MFA (Medical First Aid)"></option>
+          <option value="MC (Medical Care)"></option>
+          <option value="SCRB (Survival Craft and Rescue Boat)"></option>
+          <option value="GMDSS"></option>
+          <option value="ECDIS"></option>
+          <option value="BRM/ERM"></option>
+          <option value="COC (Certificate of Competency)"></option>
+          <option value="Endorsement COC"></option>
+          <option value="Buku Pelaut"></option>
+          <option value="Paspor"></option>
+          <option value="Sertifikat kesehatan (MCU pelaut)"></option>
+          <option value="Vaksinasi (Yellow Fever)"></option>
+          <option value="Visa"></option>
+        </datalist>
+        <label for="berlaku">Berlaku sampai <span class="muted">(wajib)</span><input id="berlaku" type="date" required></label>
+        <label for="catatan">Catatan <span class="muted">(opsional)</span><input id="catatan" maxlength="140" placeholder="Contoh: perpanjang lewat diklat di Surabaya"></label>
+        <div class="actions"><button type="submit">Tambahkan</button></div>
+      </form>
+    </section>
+
+    <section class="panel" aria-labelledby="atur-title">
+      <h2 id="atur-title">Pengaturan</h2>
+      <label for="window">Beri peringatan sejak
+        <select id="window">
+          <option value="3">3 bulan sebelum habis</option>
+          <option value="6" selected>6 bulan sebelum habis</option>
+          <option value="9">9 bulan sebelum habis</option>
+          <option value="12">12 bulan sebelum habis</option>
+        </select>
+      </label>
+      <p class="muted small">Pilih jarak yang cukup untuk satu kontrak penuh plus waktu diklat. Banyak perusahaan menolak kru yang sertifikatnya habis di tengah kontrak.</p>
+      <label class="check"><input type="checkbox" id="remember"> <span>Ingat daftar di browser ini <span class="muted small">(bisa dipakai juga oleh Pembuat CV)</span></span></label>
+      <div class="actions">
+        <button type="button" class="secondary" id="exportList">Simpan ke berkas</button>
+        <label class="button secondary" for="importList">Buka berkas</label>
+        <input type="file" id="importList" accept="application/json,.json" class="sr-only">
+        <button type="button" class="danger" id="clearAll">Hapus semua</button>
+      </div>
+    </section>
+  </div>
+</div>
+</main>
+
+<footer class="footer"><div class="wrap">
+  <p>Masa berlaku dan syarat perpanjangan bisa berubah. Pastikan ke lembaga diklat resmi atau otoritas yang menerbitkan sertifikatmu.</p>
+</div></footer>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; form-action 'none'; base-uri 'none'">
+<title>Karier Darat</title>
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/common.js"></script>
+<script defer src="darat.js"></script>
+</head>
+<body>
+<a class="skip" href="#isi">Lewati ke isi</a>
+<header class="topbar"><div class="wrap">
+  <a class="brand" href="/">CAKRA <span>Kediri Raya</span></a>
+  <nav aria-label="Menu utama"><ul class="topnav">
+    <li><a href="/">Beranda</a></li>
+    <li><a href="/karier/">CV</a></li>
+    <li><a href="/karier/sertifikat/">Sertifikat</a></li>
+    <li><a href="/karier/persiapan/">Persiapan</a></li>
+    <li><a href="/karier/darat/" aria-current="page">Karier darat</a></li>
+  </ul></nav>
+</div></header>
+
+<div class="mast"><div class="wrap">
+  <p class="eyebrow">Karier CAKRA</p>
+  <h1>Pindah ke karier darat</h1>
+  <p>Perekrut darat sering tidak paham istilah kapal. Pilih tugas yang pernah kamu kerjakan, dan kami bantu menuliskannya dalam bahasa yang mereka pahami.</p>
+</div></div>
+
+<main id="isi" class="wrap">
+<noscript><p class="note">Aktifkan JavaScript untuk memakai pemetaan pengalaman.</p></noscript>
+<div class="layout two">
+  <section class="panel" aria-labelledby="pilih-title">
+    <h2 id="pilih-title">1. Tugas yang pernah kamu kerjakan</h2>
+    <p class="muted small">Pilih hanya yang benar-benar kamu lakukan sendiri.</p>
+    <div id="duties"></div>
+  </section>
+
+  <section class="panel" aria-labelledby="hasil-title">
+    <h2 id="hasil-title">2. Hasil untuk CV Darat</h2>
+    <div id="result" aria-live="polite"><p class="empty-state">Pilih minimal satu tugas.</p></div>
+    <div class="actions">
+      <button type="button" id="toCV" disabled>Pakai di CV Darat</button>
+      <button type="button" class="secondary" id="copy" disabled>Salin teks</button>
+    </div>
+    <div class="note small">
+      <p><b>Tulis hasil, bukan hanya tugas.</b> Untuk tiap poin, tambahkan situasi, tindakanmu, dan hasilnya. Contoh: "Mengkoordinasikan sandar 4 kapal per minggu tanpa insiden selama 18 bulan." Gunakan angka hanya jika kamu yakin benar.</p>
+    </div>
+    <p class="muted small">Beberapa posisi, misalnya K3/HSE atau teknisi listrik, biasanya meminta sertifikasi tambahan di darat. Cek syarat di lowongannya.</p>
+  </section>
+</div>
+</main>
+
+<footer class="footer"><div class="wrap">
+  <p>Daftar posisi hanya contoh arah karier, bukan jaminan lowongan.</p>
+</div></footer>
+</body>
+</html>

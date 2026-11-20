@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; form-action 'none'; base-uri 'none'">
+<title>Persiapan Berlayar</title>
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/common.js"></script>
+<script defer src="persiapan.js"></script>
+</head>
+<body>
+<a class="skip" href="#isi">Lewati ke isi</a>
+<header class="topbar"><div class="wrap">
+  <a class="brand" href="/">CAKRA <span>Kediri Raya</span></a>
+  <nav aria-label="Menu utama"><ul class="topnav">
+    <li><a href="/">Beranda</a></li>
+    <li><a href="/karier/">CV</a></li>
+    <li><a href="/karier/sertifikat/">Sertifikat</a></li>
+    <li><a href="/karier/persiapan/" aria-current="page">Persiapan</a></li>
+    <li><a href="/karier/darat/">Karier darat</a></li>
+  </ul></nav>
+</div></header>
+
+<div class="mast"><div class="wrap">
+  <p class="eyebrow">Karier CAKRA</p>
+  <h1>Persiapan &amp; cek lowongan</h1>
+  <p>Centang langkah dari melamar sampai berangkat. Kenali tanda lowongan palsu sebelum kamu menyerahkan dokumen atau uang.</p>
+</div></div>
+
+<main id="isi" class="wrap">
+<div class="layout side">
+  <section class="panel" aria-labelledby="cek-title">
+    <h2 id="cek-title">Daftar periksa</h2>
+    <div class="no-print">
+      <div class="progress" aria-hidden="true"><span id="bar"></span></div>
+      <p id="progressText" class="muted small" aria-live="polite"></p>
+    </div>
+    <div id="checklist"><noscript><p>Aktifkan JavaScript untuk mencentang daftar. Kamu tetap bisa membaca tanda bahaya di samping.</p></noscript></div>
+    <div class="actions no-print">
+      <button type="button" class="secondary" id="printList">Cetak daftar</button>
+      <button type="button" class="danger" id="resetList">Hapus semua centang</button>
+    </div>
+    <p class="muted small no-print">Centang hanya diingat di browser ini sebagai kemudahan. Tidak ada data yang dikirim.</p>
+  </section>
+
+  <aside class="grid" aria-label="Lowongan aman">
+    <section class="panel" aria-labelledby="bahaya-title">
+      <h2 id="bahaya-title">Tanda bahaya lowongan</h2>
+      <p class="note warn">Berhenti dan tanya pengurus CAKRA dulu jika menemukan salah satu tanda ini.</p>
+      <ul>
+        <li>Diminta membayar "biaya penempatan", "uang jaminan", atau "biaya proses" untuk mendapat kapal, apalagi ke rekening pribadi.</li>
+        <li>Agen tidak bisa menunjukkan izin usaha perekrutan awak kapal (SIUPPAK) atau namanya berbeda dengan izin.</li>
+        <li>Tidak ada alamat kantor yang bisa didatangi. Semua komunikasi hanya lewat WhatsApp atau media sosial.</li>
+        <li>Gaji jauh di atas rata-rata untuk jabatanmu, tanpa wawancara atau pemeriksaan dokumen.</li>
+        <li>Diminta menyerahkan dokumen asli (buku pelaut, paspor, ijazah) tanpa tanda terima.</li>
+        <li>Disuruh cepat-cepat tanda tangan, atau kontrak tidak boleh dibaca dan tidak diberi salinan.</li>
+        <li>Diberangkatkan dengan visa turis atau tanpa Perjanjian Kerja Laut.</li>
+      </ul>
+    </section>
+    <section class="panel" aria-labelledby="hak-title">
+      <h2 id="hak-title">Hak yang perlu kamu tahu</h2>
+      <details>
+        <summary>Biaya perekrutan</summary>
+        <div>
+          <p>Konvensi Ketenagakerjaan Maritim (MLC 2006), yang sudah diratifikasi Indonesia, melarang biaya perekrutan dan penempatan dibebankan kepada pelaut.</p>
+          <p class="muted small">Biaya dokumen pribadi seperti paspor, buku pelaut, dan pemeriksaan kesehatan umumnya tetap tanggunganmu, kecuali perusahaan menyatakan lain.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Perjanjian Kerja Laut (PKL)</summary>
+        <div>
+          <p>Kamu berhak membaca PKL sebelum tanda tangan dan menyimpan salinannya. Pastikan tercantum: jabatan, gaji pokok, lembur, cuti, lama kontrak, pemulangan, dan perlindungan kecelakaan/kesehatan.</p>
+          <p>PKL disahkan dalam proses penyijilan oleh syahbandar. Tanyakan buktinya.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Cara memeriksa agen</summary>
+        <div>
+          <p>Minta nomor SIUPPAK agen, lalu cocokkan ke Direktorat Jenderal Perhubungan Laut, Kementerian Perhubungan, atau ke kantor syahbandar terdekat.</p>
+          <p>Tanyakan juga ke anggota CAKRA yang pernah berangkat lewat agen tersebut.</p>
+        </div>
+      </details>
+      <p class="muted small">Ringkasan ini panduan umum, bukan nasihat hukum. Aturan bisa berubah; cek sumber resmi terbaru.</p>
+    </section>
+  </aside>
+</div>
+</main>
+
+<footer class="footer"><div class="wrap">
+  <p>Punya pengalaman buruk dengan agen tertentu? Laporkan ke pengurus CAKRA agar anggota lain bisa waspada.</p>
+</div></footer>
+</body>
+</html>

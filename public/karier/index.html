@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; form-action 'none'; base-uri 'none'">
+<title>Karier CAKRA</title>
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/common.js"></script>
+<script defer src="cv.js"></script>
+</head>
+<body class="print-only-sheet">
+<a class="skip" href="#isi">Lewati ke isi</a>
+<header class="topbar"><div class="wrap">
+  <a class="brand" href="/">CAKRA <span>Kediri Raya</span></a>
+  <nav aria-label="Menu utama"><ul class="topnav">
+    <li><a href="/">Beranda</a></li>
+    <li><a href="/karier/" aria-current="page">CV</a></li>
+    <li><a href="/karier/sertifikat/">Sertifikat</a></li>
+    <li><a href="/karier/persiapan/">Persiapan</a></li>
+    <li><a href="/karier/darat/">Karier darat</a></li>
+  </ul></nav>
+</div></header>
+
+<div class="mast"><div class="wrap">
+  <p class="eyebrow">CAKRA / Kediri Raya</p>
+  <h1>Karier CAKRA</h1>
+  <p>Susun CV untuk kerja di kapal atau tunjukkan pengalaman lautmu untuk posisi di darat. Pratinjau berubah saat kamu mengetik.</p>
+</div></div>
+
+<main id="isi" class="wrap">
+<noscript><p class="note">Aktifkan JavaScript untuk mengisi dan mencetak CV.</p></noscript>
+<div class="layout two">
+  <section class="panel editor" aria-labelledby="editor-title">
+    <h2 id="editor-title">Susun CV</h2>
+    <p class="note" id="privacy">Isian tidak dikirim ke mana pun. Jangan masukkan NIK, nomor paspor, nomor buku pelaut, atau nomor sertifikat.</p>
+
+    <div class="panel no-print" aria-labelledby="draft-title">
+      <h3 id="draft-title">Draf</h3>
+      <p class="muted small">Simpan draf sebagai berkas di perangkatmu, lalu buka lagi kapan saja. Atau biarkan browser ini mengingatnya.</p>
+      <div class="actions">
+        <button type="button" class="secondary" id="exportDraft">Simpan draf (.json)</button>
+        <label class="button secondary" for="importDraft">Buka draf</label>
+        <input type="file" id="importDraft" accept="application/json,.json" class="sr-only">
+      </div>
+      <label class="check"><input type="checkbox" id="remember"> <span>Ingat draf di browser ini <span class="muted small">(jangan aktifkan di HP/komputer milik orang lain atau warnet)</span></span></label>
+    </div>
+
+    <form id="editor" autocomplete="off" aria-describedby="privacy" novalidate>
+      <fieldset class="mt-s"><legend>1. Pilih jalur</legend>
+        <div class="choices">
+          <label><input type="radio" name="track" value="laut" checked> CV Laut</label>
+          <label><input type="radio" name="track" value="darat"> CV Darat</label>
+        </div>
+      </fieldset>
+      <fieldset class="fields mt-s"><legend>2. Data diri</legend>
+        <label for="nama">Nama lengkap <span class="muted">(wajib)</span><input id="nama" data-common="nama" required maxlength="90" placeholder="Nama yang akan tampil di CV"></label>
+        <div class="field-row">
+          <label for="domisili">Domisili <span class="muted">(opsional)</span><input id="domisili" data-common="domisili" maxlength="80" placeholder="Contoh: Pare, Kab. Kediri"></label>
+          <label for="telepon">Telepon/WhatsApp <span class="muted">(opsional)</span><input id="telepon" data-common="telepon" type="tel" inputmode="tel" maxlength="30" placeholder="08xx"></label>
+        </div>
+        <label for="email">Email <span class="muted">(opsional)</span><input id="email" data-common="email" type="email" inputmode="email" maxlength="100" placeholder="nama@example.com"></label>
+      </fieldset>
+      <fieldset class="fields mt-s"><legend>3. Isi CV</legend>
+        <div id="fields" class="fields"></div>
+      </fieldset>
+      <div class="actions mt-s"><button class="danger" type="reset">Kosongkan semua</button></div>
+    </form>
+  </section>
+
+  <section class="panel preview" aria-labelledby="preview-title">
+    <div class="preview-tools no-print">
+      <h2 id="preview-title" tabindex="-1">4. Pratinjau CV</h2>
+      <p id="seaTime" class="note" hidden></p>
+      <p class="muted small">Pilih <strong>Simpan sebagai PDF</strong> di dialog cetak. Gunakan kertas A4 dan matikan header/footer browser.</p>
+      <button id="print" type="button" disabled>Cetak / Simpan PDF</button>
+    </div>
+    <article class="sheet" id="cv" aria-label="Dokumen CV" aria-live="polite"></article>
+  </section>
+</div>
+</main>
+
+<footer class="footer"><div class="wrap">
+  <p>Tips: Isi riwayat berlayar dari yang terbaru. Tulis hanya fakta yang bisa kamu buktikan dengan sijil atau surat keterangan.</p>
+</div></footer>
+</body>
+</html>
